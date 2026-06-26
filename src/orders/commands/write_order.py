@@ -127,9 +127,11 @@ def request_payment_link(order_id, total_amount, user_id):
                                                   headers={
                                                       'Content-Type': 'application/json'}
                                                   )
-
-    if True:  # if response.ok
+    if response_from_payment_service.ok:
+        payment_id = response_from_payment_service.json()["payment_id"]
         print(f"ID paiement: {payment_id}")
+    else:
+        raise Exception("Erreur lors de la création du paiement")
 
     return f"http://api-gateway:8080/payments-api/payments/process/{payment_id}"
 
