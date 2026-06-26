@@ -64,6 +64,26 @@
           "timeout": "5s"
         }
       ]
+    },
+    {
+      "endpoint": "/store-manager-api/orders/reports/best-sellers",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/orders/reports/best-sellers",
+          "host": ["http://store_manager:5000"]
+        }
+      ]
+    },
+    {
+      "endpoint": "/store-manager-api/orders/reports/highest-spenders",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/orders/reports/highest-spenders",
+          "host": ["http://store_manager:5000"]
+        }
+      ]
     }
   ]
 }
