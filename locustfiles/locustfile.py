@@ -37,7 +37,7 @@ class FlaskAPIUser(FastHttpUser):
             mock_order["items"].append(
                 {"product_id": random_id, "quantity": 2})
 
-        with self.client.post("/orders",
+        with self.client.post("/store-manager-api/orders",
                               json=mock_order,
                               headers={"Content-Type": "application/json"},
                               catch_response=True) as response:
@@ -78,7 +78,7 @@ class FlaskAPIUser(FastHttpUser):
     def highest_spenders(self):
         """Test GET /orders/reports/highest-spenders endpoint (read)"""
         self.logger.info("Calling highest_spenders")
-        with self.client.get("/orders/reports/highest-spenders", catch_response=True) as response:
+        with self.client.get("/store-manager-api/orders/reports/highest-spenders", catch_response=True) as response:
             try:
 
                 if response is None or response.headers is None:
@@ -122,7 +122,7 @@ class FlaskAPIUser(FastHttpUser):
                 if response is None or response.headers is None:
                     self.environment.events.request.fire(
                         request_type="GET",
-                        name="/orders/reports/best-sellers",
+                        name="/store-manager-api/orders/reports/best-sellers",
                         response_time=0,
                         response_length=0,
                         exception=Exception(
